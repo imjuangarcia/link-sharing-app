@@ -22,6 +22,34 @@ app.get('/error', (request, response) => {
   response.sendFile(`${__dirname}/public/error.html`);
 });
 
+// Set S3 endpoint to DigitalOcean Spaces
+const spacesEndpoint = new aws.Endpoint('sfo2.digitaloceanspaces.com');
+const s3 = new aws.S3({
+  endpoint: spacesEndpoint,
+});
+
+// upload functionality
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: 'links',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: 'public-read',
+    key(request, file, cb) {
+      cb(null, file.originalname);
+    },
+  }),
+}).array('upload', 1);
+
+app.post('/upload', (request, response) => {
+  upload(request, response, (error) => {
+    if (error) {
+      return response.redirect('/error');
+    }
+    response.redirect('/success');
+  });
+});
+
 app.listen(3001, () => {
   console.log('Server listening on port 3001');
 });
