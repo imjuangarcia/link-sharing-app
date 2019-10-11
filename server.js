@@ -3,6 +3,7 @@ const aws = require('aws-sdk');
 const express = require('express');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const uuidv4 = require('uuid/v4');
 
 const app = express();
 
@@ -36,7 +37,7 @@ const upload = multer({
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     key(request, file, cb) {
-      cb(null, file.originalname);
+      cb(null, uuidv4());
     },
   }),
 }).array('upload', 1);
