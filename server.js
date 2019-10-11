@@ -30,14 +30,15 @@ const s3 = new aws.S3({
 });
 
 // upload functionality
+const name = uuidv4();
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: 'links',
+    bucket: 'links/bloc',
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     key(request, file, cb) {
-      cb(null, uuidv4());
+      cb(null, name);
     },
   }),
 }).array('upload', 1);
@@ -47,7 +48,7 @@ app.post('/upload', (request, response) => {
     if (error) {
       return response.redirect('/error');
     }
-    return response.redirect('/success');
+    return response.redirect(`/success?file=#${name}`);
   });
 });
 

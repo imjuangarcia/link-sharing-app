@@ -11,6 +11,15 @@
 
   <body>
     <h1>Success!</h1>
-    <p>File uploaded successfully.</p>
+    <p>
+      File uploaded successfully. It can be viewed at
+      <a href="#" target="_blank"></a>
+    </p>
+    <script>
+      const url = "https://links.juangarcia.design/bloc/";
+      const link = document.querySelector("a");
+      link.innerHTML = url + window.location.hash.slice(1);
+      link.setAttribute("href", url + window.location.hash.slice(1));
+    </script>
   </body>
 </html>
