@@ -46,7 +46,7 @@ app.post('/upload', (request, response) => {
     if (error) {
       return response.redirect('/error');
     }
-    response.redirect('/success');
+    return response.redirect('/success');
   });
 });
 
