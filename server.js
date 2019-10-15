@@ -3,6 +3,7 @@ const aws = require('aws-sdk');
 const express = require('express');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const path = require('path');
 
 const app = express();
 
@@ -28,16 +29,20 @@ const s3 = new aws.S3({
   endpoint: spacesEndpoint,
 });
 
-// upload functionality
+// Declare variables
 const name = Date.now().toString();
-const uploadBloc = multer({
+let fullname = name;
+
+// upload functionality
+const uploadWork = multer({
   storage: multerS3({
     s3,
-    bucket: 'links/bloc',
+    bucket: 'links/work',
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     key(request, file, cb) {
-      cb(null, name);
+      cb(null, name + path.extname(file.originalname));
+      fullname = name + path.extname(file.originalname);
     },
   }),
 }).array('upload', 1);
@@ -49,17 +54,18 @@ const uploadAdmin = multer({
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     key(request, file, cb) {
-      cb(null, name);
+      cb(null, name + path.extname(file.originalname));
+      fullname = name + path.extname(file.originalname);
     },
   }),
 }).array('upload', 1);
 
-app.post('/upload/bloc', (request, response) => {
-  uploadBloc(request, response, (error) => {
+app.post('/upload/work', (request, response) => {
+  uploadWork(request, response, (error) => {
     if (error) {
       return response.redirect('/error');
     }
-    return response.redirect(`/success?file=#bloc/${name}`);
+    return response.redirect(`/success?file=#work/${fullname}`);
   });
 });
 
@@ -68,7 +74,7 @@ app.post('/upload/admin', (request, response) => {
     if (error) {
       return response.redirect('/error');
     }
-    return response.redirect(`/success?file=#admin/${name}`);
+    return response.redirect(`/success?file=#admin/${fullname}`);
   });
 });
 
