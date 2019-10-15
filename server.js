@@ -3,7 +3,6 @@ const aws = require('aws-sdk');
 const express = require('express');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-const uuidv4 = require('uuid/v4');
 
 const app = express();
 
@@ -30,7 +29,7 @@ const s3 = new aws.S3({
 });
 
 // upload functionality
-const name = uuidv4();
+const name = Date.now();
 const uploadBloc = multer({
   storage: multerS3({
     s3,
