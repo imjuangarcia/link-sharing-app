@@ -29,7 +29,7 @@ const s3 = new aws.S3({
 });
 
 // upload functionality
-const name = Date.now();
+const name = Date.now().toString();
 const uploadBloc = multer({
   storage: multerS3({
     s3,
