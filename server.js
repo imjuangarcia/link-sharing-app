@@ -31,7 +31,7 @@ const s3 = new aws.S3({
 
 // upload functionality
 const name = uuidv4();
-const upload = multer({
+const uploadBloc = multer({
   storage: multerS3({
     s3,
     bucket: 'links/bloc',
@@ -43,12 +43,33 @@ const upload = multer({
   }),
 }).array('upload', 1);
 
-app.post('/upload', (request, response) => {
-  upload(request, response, (error) => {
+const uploadAdmin = multer({
+  storage: multerS3({
+    s3,
+    bucket: 'links/admin',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: 'public-read',
+    key(request, file, cb) {
+      cb(null, name);
+    },
+  }),
+}).array('upload', 1);
+
+app.post('/upload/bloc', (request, response) => {
+  uploadBloc(request, response, (error) => {
     if (error) {
       return response.redirect('/error');
     }
-    return response.redirect(`/success?file=#${name}`);
+    return response.redirect(`/success?file=#bloc/${name}`);
+  });
+});
+
+app.post('/upload/admin', (request, response) => {
+  uploadAdmin(request, response, (error) => {
+    if (error) {
+      return response.redirect('/error');
+    }
+    return response.redirect(`/success?file=#admin/${name}`);
   });
 });
 
