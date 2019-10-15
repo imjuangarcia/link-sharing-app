@@ -5,6 +5,7 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const path = require('path');
 
+// Initialize the app
 const app = express();
 
 // Views in public directory
@@ -29,55 +30,37 @@ const s3 = new aws.S3({
   endpoint: spacesEndpoint,
 });
 
-// Declare variables
-const name = Date.now().toString();
-let fullname = name;
+// Declare variables. Date for the timestamp, and filename to store the name + extension
+const date = Date.now().toString();
+let filename;
 
-// upload functionality
-const uploadWork = multer({
-  storage: multerS3({
-    s3,
-    bucket: 'links/work',
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: 'public-read',
-    key(request, file, cb) {
-      cb(null, name + path.extname(file.originalname));
-      fullname = name + path.extname(file.originalname);
-    },
-  }),
-}).array('upload', 1);
+// Code to run when form is submitted
+app.post('/links/*', (request, response) => {
+  // Multer upload
+  const upload = multer({
+    storage: multerS3({
+      s3,
+      contentType: multerS3.AUTO_CONTENT_TYPE,
+      acl: 'public-read',
+      bucket: request.url.slice(1),
+      key(req, file, cb) {
+        // Reassign the variable with the full file name (name + extension)
+        filename = date + path.extname(file.originalname);
+        cb(null, filename);
+      },
+    }),
+  }).array('upload', 1);
 
-const uploadAdmin = multer({
-  storage: multerS3({
-    s3,
-    bucket: 'links/admin',
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: 'public-read',
-    key(request, file, cb) {
-      cb(null, name + path.extname(file.originalname));
-      fullname = name + path.extname(file.originalname);
-    },
-  }),
-}).array('upload', 1);
-
-app.post('/upload/work', (request, response) => {
-  uploadWork(request, response, (error) => {
+  // Run the upload function
+  upload(request, response, (error) => {
     if (error) {
       return response.redirect('/error');
     }
-    return response.redirect(`/success?file=#work/${fullname}`);
+    return response.redirect(`/success?file=#${request.url}/${filename}`);
   });
 });
 
-app.post('/upload/admin', (request, response) => {
-  uploadAdmin(request, response, (error) => {
-    if (error) {
-      return response.redirect('/error');
-    }
-    return response.redirect(`/success?file=#admin/${fullname}`);
-  });
-});
-
+// Port to listen to
 app.listen(3001, () => {
   console.log('Server listening on port 3001');
 });
