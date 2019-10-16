@@ -30,8 +30,7 @@ const s3 = new aws.S3({
   endpoint: spacesEndpoint,
 });
 
-// Declare variables. Date for the timestamp, and filename to store the name + extension
-const date = Date.now().toString();
+// Declare filename variable to store the name + extension
 let filename;
 
 // Code to run when form is submitted
@@ -44,6 +43,8 @@ app.post('/links/*', (request, response) => {
       acl: 'public-read',
       bucket: request.url.slice(1),
       key(req, file, cb) {
+        // Create date variable for timestamp
+        const date = Date.now().toString();
         // Reassign the variable with the full file name (name + extension)
         filename = date + path.extname(file.originalname);
         cb(null, filename);
