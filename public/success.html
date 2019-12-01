@@ -15,7 +15,12 @@
   <p>
     File uploaded successfully. It can be viewed at
     <input type="text" id="link">
-    <button class="copy">Copy Link</button>
+    <div class="tooltip">
+      <button class="copy">
+        <span class="tooltiptext" id="tooltip">Copy to clipboard</span>
+        Copy Link
+      </button>
+    </div>
   </p>
   <script src="js/getLinkAndCopy.js"></script>
 </body>

@@ -12,6 +12,9 @@ link.value = `https://links.juangarcia.design${window.location.hash.slice(7)}`;
 button.addEventListener('click', () => {
   link.select();
   document.execCommand('copy');
+
+  const tooltip = document.querySelector('#tooltip');
+  tooltip.innerHTML = 'Copied to clipboard!';
 });
 
 // Event to open the link in new tab if clicking on the url
