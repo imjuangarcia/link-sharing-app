@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Link Sharing App</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./style.css" />
-  </head>
+  <title>Link Sharing App</title>
 
-  <body>
-    <h1>Success!</h1>
-    <p>
-      File uploaded successfully. It can be viewed at
-      <a href="#" target="_blank"></a>
-    </p>
-    <script>
-      // Get the link item
-      const link = document.querySelector("a");
+  <link rel="stylesheet" href="./style.css" />
+</head>
 
-      // Set the link text and href to be the url. the slice() method gets rid of the unnecesary /links parameter that gets passed
-      link.innerHTML =
-        "https://links.juangarcia.design" + window.location.hash.slice(7);
-      link.setAttribute(
-        "href",
-        "https://links.juangarcia.design" + window.location.hash.slice(7)
-      );
-    </script>
-  </body>
+<body>
+  <h1>Success!</h1>
+  <p>
+    File uploaded successfully. It can be viewed at
+    <input type="text" id="link">
+    <button class="copy">Copy Link</button>
+  </p>
+  <script src="js/getLinkAndCopy.js"></script>
+</body>
+
 </html>
