@@ -18,7 +18,7 @@
   <div id="drop-area">
     <form method="post" enctype="multipart/form-data" action="/links/work">
       <label for="fileElement">Upload a file</label>
-      <input type="file" name="upload" id="fileElement" accept="image/*" onchange="handleFiles(this.files)" />
+      <input type="file" name="upload" id="fileElement" onchange="handleFiles(this.files)" />
       <select name="folder" id="folder">
         <option value="work">Work</option>
         <option value="admin">Admin</option>
