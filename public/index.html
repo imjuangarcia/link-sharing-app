@@ -21,21 +21,42 @@
 </head>
 
 <body>
-  <h1>Link Sharing App</h1>
+  <main>
+    <header>
+      <h1>Link Sharing App</h1>
+    </header>
 
-  <p>Upload a file with the file dialog or by dragging and dropping images onto the dashed region</p>
-
-  <div id="drop-area">
-    <form method="post" enctype="multipart/form-data" action="/links/work">
-      <label for="fileElement">Upload a file</label>
-      <input type="file" name="upload" id="fileElement" onchange="handleFiles(this.files)" />
-      <select name="folder" id="folder">
-        <option value="work">Work</option>
-        <option value="admin">Admin</option>
-      </select>
-      <input type="submit" class="button" />
-    </form>
-  </div>
+    <section class="drag-and-drop" id="drop-area">
+      <img src="images/upload.svg" alt="Illustration of a man with an image on his hand">
+      <form method="post" enctype="multipart/form-data" action="/links/work" id="upload">
+        <label for="fileElement">Drag &amp; Drop a file here or <span>Upload manually</span></label>
+        <input type="file" name="upload" id="fileElement" onchange="handleFiles(this.files)" required />
+      </form>
+    </section>
+    <div class="submit-ctas">
+      <div class="select-container">
+        <label for="folder">Folder to upload the file to:</label>
+        <select name="folder" id="folder">
+          <option value="work">Work</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button type="submit" form="upload">
+        <i class="fas fa-rocket"></i>
+        Let's Go!
+      </button>
+    </div>
+    <footer>
+      <p>
+        Designed &amp; Developed by <a href="https://www.juangarcia.design" target="_blank"
+          rel="noopener noreferrer">Juan Mart&iacute;n Garc&iacute;a</a>. Deployed on <a href="https://www.netlify.com"
+          target="_blank" rel="noopener noreferrer">Netlify</a>, code is on <a
+          href="https://gitlab.com/jmg-side-projects/link-sharing-app" target="_blank"
+          rel="noopener noreferrer">Gitlab</a>.
+      </p>
+    </footer>
+  </main>
+  <script src="https://kit.fontawesome.com/2afe2b3583.js" crossorigin="anonymous"></script>
   <script src="js/changeFormAction.js"></script>
   <script src="js/dragAndDrop.js"></script>
 </body>
