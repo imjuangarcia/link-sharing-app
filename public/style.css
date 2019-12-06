@@ -1,12 +1,20 @@
+/* general styling & overrides */
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700i&display=swap");
+
 html {
-  font-family: sans-serif;
-  line-height: 1.5;
-  color: #333;
+  font-family: "Poppins", sans-serif;
 }
 
-body {
-  margin: 0 auto;
-  max-width: 500px;
+/* variables */
+:root {
+  --black: rgb(17, 15, 36);
+}
+
+h1 {
+  font-size: 2rem;
+  opacity: 0.4;
 }
 
 label,
