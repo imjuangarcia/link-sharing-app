@@ -54,6 +54,8 @@ header h1 a:hover {
 
 .drag-and-drop img {
   margin-bottom: 2rem;
+  width: 100%;
+  max-width: 420px;
 }
 
 .drag-and-drop form {
@@ -157,6 +159,7 @@ footer {
 footer p {
   font-size: 0.75rem;
   color: rgba(17, 15, 36, 0.4);
+  line-height: 140%;
 }
 
 footer p a {
@@ -218,6 +221,8 @@ footer p a:hover {
 .success img,
 .error img {
   margin-bottom: 3rem;
+  max-width: 420px;
+  width: 100%;
 }
 
 .success h2,
@@ -268,12 +273,13 @@ footer p a:hover {
   width: 100%;
   max-width: 640px;
   margin: 2rem 0;
+  box-sizing: border-box;
 }
 
 .input-container input {
   appearance: none;
   -moz-appearance: none;
-  width: 100%;
+  width: 90%;
   background: transparent;
   border: none;
   color: rgba(17, 15, 36, 0.4);
@@ -324,4 +330,68 @@ footer p a:hover {
 
 .overlay.show {
   display: flex;
+}
+
+/* Responsive */
+@media screen and (max-width: 670px) {
+  main {
+    padding: 20px;
+  }
+
+  .drag-and-drop {
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  footer {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .drag-and-drop form label {
+    text-align: center;
+  }
+
+  .submit-ctas {
+    flex-direction: column;
+  }
+
+  .submit-ctas .select-container {
+    margin-bottom: 1rem;
+  }
+
+  .submit-ctas .select-container select {
+    width: 100%;
+  }
+
+  .submit-ctas button {
+    width: 100%;
+  }
+
+  .success h2,
+  .error h2 {
+    font-size: 2.5rem;
+  }
+
+  .success p,
+  .error p {
+    font-size: 1rem;
+  }
+
+  .input-container input {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .drag-and-drop form label,
+  .drag-and-drop form input {
+    font-size: 0.8rem;
+  }
+
+  .success p,
+  .error p {
+    text-align: center;
+  }
 }
