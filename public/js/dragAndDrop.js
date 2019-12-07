@@ -1,5 +1,6 @@
-/* eslint-disable no-undef */
 const dropArea = document.querySelector('#drop-area');
+const button = document.querySelector('.submit-ctas button');
+const input = document.querySelector('input');
 
 function preventDefaults(e) {
   e.preventDefault();
@@ -14,9 +15,16 @@ function unhighlight() {
   dropArea.classList.remove('highlight');
 }
 
+function checkButtonState() {
+  if (button.hasAttribute('disabled')) {
+    button.removeAttribute('disabled');
+  }
+}
+
 function handleDrop(e) {
   const fileInput = document.querySelector('#fileElement');
   fileInput.files = e.dataTransfer.files;
+  checkButtonState();
 }
 
 
@@ -35,3 +43,4 @@ function handleDrop(e) {
 
 
 dropArea.addEventListener('drop', handleDrop, false);
+input.addEventListener('change', checkButtonState);

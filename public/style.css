@@ -129,6 +129,16 @@ header h1 {
   margin-right: 0.5rem;
 }
 
+.submit-ctas button:disabled {
+  background-color: rgba(17, 15, 36, 0.1);
+  color: rgba(17, 15, 36, 0.2);
+  pointer-events: none;
+}
+
+.submit-ctas button:disabled i {
+  color: rgba(17, 15, 36, 0.2);
+}
+
 /* footer */
 footer {
   margin-top: 6rem;
