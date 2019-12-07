@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 // Get the link and button
 const link = document.querySelector('#link');
 const button = document.querySelector('.copy');

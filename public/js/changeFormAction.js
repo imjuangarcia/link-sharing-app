@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 // Grab the select and form item
 const select = document.querySelector('select');
 const form = document.querySelector('form');
