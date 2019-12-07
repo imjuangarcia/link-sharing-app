@@ -1,7 +1,7 @@
 /* general styling & overrides */
 
 /* fonts */
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900i&display=swap");
 
 * {
   font-family: "Poppins", sans-serif;
@@ -36,8 +36,8 @@ header h1 {
   background: var(--off-white);
   border: 2px dashed var(--light-grey);
   padding: 4rem;
-  border-radius: 1rem;
   margin: 6rem auto;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +101,7 @@ header h1 {
   font-size: 1rem;
   padding: 1rem;
   flex: 1;
-  background-image: url("images/chevron-down.png");
+  background-image: url("../images/chevron-down.png");
   background-size: 1rem;
   background-position: 95% 1.5rem;
   background-repeat: no-repeat;
@@ -195,4 +195,80 @@ footer p a:hover {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+/* success */
+.success {
+  margin: 6rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success img {
+  margin-bottom: 3rem;
+}
+
+.success h2 {
+  font-weight: 900;
+  color: var(--blue);
+  font-size: 3.25rem;
+}
+
+.success p {
+  font-size: 1.5rem;
+  color: var(--black);
+  opacity: 0.4;
+  margin: 1rem 0;
+}
+
+.success a {
+  font-size: 1rem;
+  color: var(--blue);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.success a i {
+  margin-right: 0.5rem;
+}
+
+.success a:hover {
+  opacity: 0.8;
+}
+
+/* input link */
+.input-container {
+  display: flex;
+  background-color: var(--off-white);
+  padding: 1rem;
+  border: 2px dashed var(--light-grey);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 640px;
+  margin: 2rem 0;
+}
+
+.input-container input {
+  appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: rgba(17, 15, 36, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-container input:hover {
+  color: var(--blue);
+}
+
+.input-container button {
+  appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--blue);
 }

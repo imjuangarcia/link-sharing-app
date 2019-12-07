@@ -7,8 +7,8 @@
 
   <title>Link Sharing App</title>
 
-  <link rel="stylesheet" href="./reset.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
 
   <!-- favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -23,20 +23,40 @@
 <body>
   <main>
     <header>
-      <h1>Success!</h1>
+      <h1>Link Sharing App</h1>
     </header>
-    <p>
-      File uploaded successfully. It can be viewed at
-      <input type="text" id="link">
-      <div class="tooltip">
-        <button class="copy">
-          <span class="tooltiptext" id="tooltip">Copy to clipboard</span>
-          Copy Link
-        </button>
+    <section class="success">
+      <img src="images/success.svg" alt="Illustration of a folder with multiple documents">
+      <h2>Success!</h2>
+      <p>
+        Your file was uploaded successfully
+      </p>
+      <div class="input-container">
+        <input type="text" id="link">
+        <div class="tooltip">
+          <button class="copy">
+            <span class="tooltiptext" id="tooltip">Copy to clipboard</span>
+            <i class="fal fa-2x fa-paste"></i>
+          </button>
+        </div>
       </div>
-    </p>
+      <a href="/">
+        <i class="far fa-hand-point-left"></i>
+        Upload more
+      </a>
+    </section>
+    <footer>
+      <p>
+        Designed &amp; Developed by <a href="https://www.juangarcia.design" target="_blank"
+          rel="noopener noreferrer">Juan
+          Mart&iacute;n Garc&iacute;a</a>. Deployed on <a href="https://www.netlify.com" target="_blank"
+          rel="noopener noreferrer">Netlify</a>, code is on <a
+          href="https://gitlab.com/jmg-side-projects/link-sharing-app" target="_blank"
+          rel="noopener noreferrer">Gitlab</a>.
+      </p>
+    </footer>
+    <script src="https://kit.fontawesome.com/2afe2b3583.js" crossorigin="anonymous"></script>
   </main>
-  <script src="https://kit.fontawesome.com/2afe2b3583.js" crossorigin="anonymous"></script>
   <script src="js/getLinkAndCopy.js"></script>
 </body>
 
