@@ -167,11 +167,11 @@ footer p a:hover {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 140px;
-  background-color: #555;
-  color: #fff;
+  background-color: rgba(17, 15, 36, 1);
+  color: var(--off-white);
   text-align: center;
-  border-radius: 6px;
-  padding: 5px;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
   position: absolute;
   z-index: 1;
   bottom: 150%;
@@ -189,7 +189,7 @@ footer p a:hover {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: rgba(17, 15, 36, 1) transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
