@@ -27,8 +27,17 @@ header {
 
 header h1 {
   font-size: 2rem;
-  color: var(--black);
   opacity: 0.4;
+}
+
+header h1 a {
+  color: var(--black);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+header h1 a:hover {
+  opacity: 0.8;
 }
 
 /* drag & drop */
@@ -198,43 +207,55 @@ footer p a:hover {
 }
 
 /* success */
-.success {
+.success,
+.error {
   margin: 6rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.success img {
+.success img,
+.error img {
   margin-bottom: 3rem;
 }
 
-.success h2 {
+.success h2,
+.error h2 {
   font-weight: 900;
   color: var(--blue);
   font-size: 3.25rem;
 }
 
-.success p {
+.success p,
+.error p {
   font-size: 1.5rem;
   color: var(--black);
   opacity: 0.4;
   margin: 1rem 0;
 }
 
-.success a {
+.success a,
+.error a {
   font-size: 1rem;
   color: var(--blue);
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  font-weight: 300;
 }
 
-.success a i {
+.success a i,
+.error a i {
   margin-right: 0.5rem;
 }
 
-.success a:hover {
+.success a:hover,
+.error a:hover {
   opacity: 0.8;
+}
+
+.error a {
+  margin-top: 2rem;
 }
 
 /* input link */
